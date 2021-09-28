@@ -46,12 +46,13 @@
         </form>
     </main>
     <script>
+        const baseURL = "https://ps-courses-js.netlify.app/.netlify/functions/server";
         const formEl = document.querySelector('form');
         formEl.querySelector('button').addEventListener('click', (e) => {
             const formData = new FormData(formEl);
             console.log('formData: ', formData);
             e.preventDefault();
-            fetch("/new-course", {
+            fetch(baseURL + "/new-course", {
                 method: 'POST',
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({

@@ -1,6 +1,7 @@
 let courses;
+const baseURL = "https://ps-courses-js.netlify.app/.netlify/functions/server";
 
-fetch("/courses").then((res) => res.json()).then(res => {
+fetch(baseURL + "/courses").then((res) => res.json()).then(res => {
   courses = res;
   updateContent();
 })
@@ -49,11 +50,11 @@ function deleteCourse(courseID) {
     const confirmIfDelete = confirm(`Are you sure you want to delete course - ${courseToBeDeleted.title}`);
     if (confirmIfDelete) {
         console.log('Deleting: ', courseToBeDeleted.title);
-        fetch("/deleteCourse/" + courseToBeDeleted.id, {
+        fetch(baseURL + "/deleteCourse/" + courseToBeDeleted.id, {
             method: 'DELETE',
             headers: { "Content-Type": "application/json" }
         }).then((res) => res.json()).then(res => {
-            console.log('Successfully deleted which Course? ', res);
+            console.log('Course successfully deleted. New list of courses: ', res);
             window.location.href = "/";
         })
     } else {
