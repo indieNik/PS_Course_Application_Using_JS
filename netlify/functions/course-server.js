@@ -5,7 +5,7 @@ const app = express();
 
 const router = express.Router();
 
-let courses = require("../models/courses.model.js");
+let courses = require("../../models/courses.model.js");
 
 app.use(express.static(path.join(__dirname, "/")));
 app.use(express.json());
