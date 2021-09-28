@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Course</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body class="container">
+    <nav>
+        <div class="logo">
+            <a style="margin-left: 0.2em;" class="nav-link" href="/">
+                <span><i class="fas fa-user-graduate"></i></span>
+            </a>
+        </div>
+        <div class="links">
+            <a class="nav-link" href="/">All Courses</a>
+            <a class="nav-link active" href="/new-course.html">New Course</a>
+        </div>
+    </nav>
+    <main>
+        <form class="new-course-form">
+            <h1 style="text-align: center; margin: 0 0 1em;">New Course</h1>
+            <div class="form-row">
+                <label for="courseName">Name</label>
+                <input type="text" required class="form-control" name="courseName" id="courseName" />
+            </div>
+
+            <div class="form-row">
+                <label for="coursePrice">Price</label>
+                <input type="number" class="form-control" name="coursePrice" id="coursePrice" />
+            </div>
+
+            <div class="form-row">
+                <label for="courseImage">Image URL</label>
+                <input type="text" class="form-control" name="courseImage" id="courseImage" />
+            </div>
+
+            <button type="submit" id="btnAddNewCourse" class="btn btn-green">
+                Add New Course
+            </button>
+        </form>
+    </main>
+    <script>
+        const formEl = document.querySelector('form');
+        formEl.querySelector('button').addEventListener('click', (e) => {
+            const formData = new FormData(formEl);
+            console.log('formData: ', formData);
+            e.preventDefault();
+            fetch("/new-course", {
+                method: 'POST',
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    id: `course-${(new Date).getMilliseconds()}`,
+                    title: formData.get('courseName'),
+                    price: formData.get('coursePrice'),
+                    rating: 1,
+                    likes: 0,
+                    imageUrl: formData.get('courseImage'),
+                }),
+            }).then((res) => res.json()).then(res => {
+                // console.log('Post res: ', res);
+                alert('Successfully added New Course!');
+                window.location.href = "/";
+            })
+        });
+    </script>
+</body>
+
+</html>

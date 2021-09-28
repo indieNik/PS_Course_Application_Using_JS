@@ -1,0 +1,132 @@
+/* Reset Styles */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Container Styles */
+
+.container {
+  max-width: 1400px;
+  margin: auto;
+}
+
+/* Navbar Styles */
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #333;
+  height: 50px;
+  padding: 1em;
+  margin-bottom: 2em;
+  color: #fff;
+}
+nav .logo {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+nav a.nav-link {
+  color: #fff;
+  text-transform: uppercase;
+  margin: 0 1em;
+  text-decoration: none;
+}
+nav a.nav-link.active {
+  border-bottom: 2px solid red;
+}
+
+/* Main Page Course Styles */
+
+#courses {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 5em;
+  max-width: 90%;
+  margin: auto;
+  margin-bottom: 2em;
+}
+#courses .card {
+  border: 1px solid black;
+  border-radius: 0.5em;
+  padding: 0.7em;
+  box-shadow: 10px 10px 15px #ccc;
+}
+#courses .card .card-image {
+  width: 250px;
+  height: 150px;
+}
+#courses .card .card-image img {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+#courses .card .card-heading {
+  font-family: sans-serif;
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 0.2em 0;
+  margin-right: 1em;
+  display: flex;
+  flex-direction: column-reverse;
+}
+#courses .card .card-heading .ratings {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5em;
+  color: cornflowerblue;
+}
+#courses .card .card-heading .ratings i {
+  font-size: 0.6em;
+}
+#courses .card .card-price {
+  font-family: sans-serif;
+  margin: 0.5em 0;
+  margin-bottom: 0.5em;
+}
+
+/* Utilities & Common Component Styles */
+
+button.btn {
+  padding: 0.7em 1em;
+  color: #fff;
+  border: none;
+  border-radius: 0.3em;
+  cursor: pointer;
+}
+
+button.btn.btn-blue {
+  background-color: #4545fa;
+}
+
+button.btn.btn-red {
+  background-color: #fd3f3f;
+}
+
+button.btn.btn-green {
+  background-color: #3db82d;
+}
+
+form {
+  max-width: 25em;
+  display: grid;
+  gap: 1em;
+  padding: 2em;
+  margin: auto;
+}
+
+.form-row {
+  display: grid;
+  gap: 0.5em;
+}
+
+.form-control {
+  padding: 0.5em;
+  border: none;
+  box-shadow: 0 0 5px #ccc;
+}
