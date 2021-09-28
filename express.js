@@ -1,7 +1,7 @@
 const express = require("express");
 const path = require("path");
 const app = express();
-const courses = require("./models/courses.model.js");
+let courses = require("./models/courses.model.js");
 
 app.use(express.static(path.join(__dirname, "/")));
 app.use(express.json());
@@ -15,6 +15,11 @@ app.post("/new-course", (req, res) => {
   // will come from db
   // console.log('Req: ', req.body);
   courses.push(req.body);
+  res.json(courses);
+});
+
+app.delete('/deleteCourse/:id', function(req, res) {
+  courses = [...courses].filter(c => c.id != req.params.id)
   res.json(courses);
 });
 

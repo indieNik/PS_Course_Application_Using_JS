@@ -30,7 +30,7 @@ function updateContent() {
                 <i class="fas fa-thumbs-up"></i>
             </button>
             <button class="action">
-                <button class="btn btn-red">
+                <button onclick="deleteCourse(${course.id})" class="btn btn-red">
                     <i class="fas fa-trash"></i>
                 </button>
             </button>
@@ -41,4 +41,22 @@ function updateContent() {
     cardEl.innerHTML = domString;
     coursesEl.appendChild(cardEl);
   }
+}
+
+function deleteCourse(courseID) {
+    console.log('courseID: ', courseID);
+    const courseToBeDeleted = courses.find(el => el.id === courseID);
+    const confirmIfDelete = confirm(`Are you sure you want to delete course - ${courseToBeDeleted.title}`);
+    if (confirmIfDelete) {
+        console.log('Deleting: ', courseToBeDeleted.title);
+        fetch("/deleteCourse/" + courseToBeDeleted.id, {
+            method: 'DELETE',
+            headers: { "Content-Type": "application/json" }
+        }).then((res) => res.json()).then(res => {
+            console.log('Successfully deleted which Course? ', res);
+            window.location.href = "/";
+        })
+    } else {
+        console.log('Nothing deleted');
+    }
 }
