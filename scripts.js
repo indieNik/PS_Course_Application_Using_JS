@@ -22,12 +22,11 @@ function updateContent() {
             </span>
         </div>
         <div class="card-price">
-            ₹. ${course.price}
+            ₹ ${course.price}
         </div>
         <div class="card-actions">
             <button class="btn btn-blue">
-                ${course.likes}
-                &nbsp;
+                ${course.likes} 
                 <i class="fas fa-thumbs-up"></i>
             </button>
             <button class="action">
