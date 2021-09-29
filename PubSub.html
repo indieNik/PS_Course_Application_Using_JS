@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      class Webinar {
+        participants = [];
+        subscribe(theParticipant) {
+          this.participants.push(theParticipant);
+          theParticipant.Handler(`Glad to have you in the Webinar!`);
+        }
+        unsubscribe(theParticipant) {
+          this.participants = this.participants.filter(
+            (p) => p.id != theParticipant.id
+          );
+        }
+
+        execute(webinarDetails) {
+          for (const participant of this.participants) {
+            if (participant.paid) {
+              participant.Handler(webinarDetails);
+            } else {
+              participant.Error("Not eligible as fees not paid !");
+            }
+          }
+        }
+      }
+
+      class Participant {
+        constructor(id, name, paid) {
+          this.id = id;
+          this.name = name;
+          this.paid = paid;
+        }
+
+        Handler(details) {
+          console.log(`Welcome ${this.name} ! ${details}`);
+        }
+        Error(errDetails) {
+          console.log(`Hey ${this.name} ! ${errDetails}`);
+        }
+      }
+
+      let p1 = new Participant(1, "Amit", true);
+      let p2 = new Participant(2, "Kishor", true);
+      let p3 = new Participant(3, "Ashok", false);
+
+      var jsWebinar = new Webinar();
+      jsWebinar.subscribe(p1);
+      jsWebinar.subscribe(p2);
+      jsWebinar.subscribe(p3);
+      // p2 to unsubscribe
+      //   jsWebinar.unsubscribe(p2);
+
+      jsWebinar.execute("This is a javascript webinar !");
+    </script>
+  </head>
+  <body>
+      <h1>
+        JS - Publisher/Subscribers Patterns
+      </h1>
+      <p>
+          Open console and type <pre style="display: inline;">jsWebinar</pre>
+      </p>
+  </body>
+</html>
