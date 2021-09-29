@@ -30,7 +30,7 @@ function updateContent() {
                 <i class="fas fa-thumbs-up"></i>
             </button>
             <button class="action">
-                <button onclick="deleteCourse(${course.id})" class="btn btn-red">
+                <button onclick="deleteCourse('${course.id}')" class="btn btn-red">
                     <i class="fas fa-trash"></i>
                 </button>
             </button>
@@ -53,7 +53,7 @@ function deleteCourse(courseID) {
             method: 'DELETE',
             headers: { "Content-Type": "application/json" }
         }).then((res) => res.json()).then(res => {
-            console.log('Course successfully deleted. New list of courses: ', res);
+            console.log('Course successfully deleted. Updated list of courses: ', res);
             window.location.href = "/";
         })
     } else {
