@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Components Basics</title>
+    <script>
+        class HelloWorld extends HTMLElement {
+            constructor() {
+                super();
+                console.log("Hello World Web Component !");
+            }
+        }
+        customElements.define("uc-helloworld", HelloWorld);
+    </script>
+</head>
+
+<body>
+    <uc-helloworld></uc-helloworld>
+</body>
+
+</html>
