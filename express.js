@@ -1,8 +1,10 @@
 const express = require("express");
 const path = require("path");
+const cors = require("cors");
 const app = express();
 let courses = require("./models/courses.model.js");
 
+app.use(cors());
 app.use(express.static(path.join(__dirname, "/")));
 app.use(express.json());
 app.get("/", (req, res) => res.sendFile("../index.html", { root: __dirname }));
